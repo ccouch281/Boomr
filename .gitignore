@@ -44,5 +44,4 @@ Build/*
 .idea/
 .vscode/
 
-# Private local files
-TimeCard/*
+Maps

@@ -1,0 +1,36 @@
+# Unreal Engine 4 .gitignore
+
+Binaries/
+Plugins/Binaries/
+Intermediate/
+Plugins/Intermediate/
+Saved/
+DerivedDataCache/
+Platforms/
+Build/
+Developers/
+
+
+# Project files
+.vs/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+
+# Other
+*.log
+*.tmp
+*.bak
+*.swp
+*.patch
+*.diff
+
+# Mac specific
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/

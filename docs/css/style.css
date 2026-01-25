@@ -255,44 +255,48 @@ pre.highlight,
   line-height: 1.5 !important;
 }
 
-/* Individual Token Overrides */
+/* Individual Token Overrides - Visual Studio 2026 Dark */
 .highlight .c,
 .highlight .c1,
-.highlight .cm {
+.highlight .cm,
+.highlight .cs {
   color: #6a9955 !important;
   font-style: italic !important;
 }
 
 /* Comments */
-.highlight .cp,
-.highlight .cpf {
+.highlight .cp {
   color: #9b9b9b !important;
 }
 
 /* Preprocessor */
+
+/* Keywords (Blue) - const, return, if, else, etc. */
 .highlight .k,
 .highlight .kd,
 .highlight .kn,
 .highlight .kp,
 .highlight .kr,
-.highlight .ow {
+.highlight .kw {
   color: #569cd6 !important;
 }
 
-/* Keywords (Blue) */
+/* Types (Teal) - float, bool, int, void, class names */
 .highlight .kt,
 .highlight .nc,
-.highlight .no {
+.highlight .no,
+.highlight .nt {
   color: #4ec9b0 !important;
 }
 
-/* Types / Classes (Teal) */
+/* Functions (Yellow) */
 .highlight .nf,
-.highlight .fm {
+.highlight .fm,
+.highlight .na {
   color: #dcdcaa !important;
 }
 
-/* Functions (Yellow) */
+/* Strings (Orange) */
 .highlight .s,
 .highlight .s1,
 .highlight .s2,
@@ -308,7 +312,7 @@ pre.highlight,
   color: #ce9178 !important;
 }
 
-/* Strings (Orange) */
+/* Numbers (Light Green) */
 .highlight .m,
 .highlight .mi,
 .highlight .mf,
@@ -318,24 +322,23 @@ pre.highlight,
   color: #b5cea8 !important;
 }
 
-/* Numbers (Light Green) */
+/* Operators & Punctuation (White/Grey) */
 .highlight .o,
 .highlight .p {
   color: #d4d4d4 !important;
 }
 
-/* Operators / Punctuation */
-.highlight .nb,
-.highlight .bp {
-  color: #569cd6 !important;
+/* Macros / Defined Constants (Purple/Pink in VS, sometimes Blue) - Let's use light purple */
+.highlight .m {
+  color: #b5cea8 !important;
 }
 
-/* Built-ins */
-.highlight .nl {
-  color: #c8c8c8 !important;
+/* Built-ins / Variables */
+.highlight .nb {
+  color: #4ec9b0 !important;
 }
 
-/* Labels */
+/* Built-in types often look like types */
 .highlight .nv,
 .highlight .vc,
 .highlight .vg,
@@ -343,10 +346,8 @@ pre.highlight,
   color: #9cdcfe !important;
 }
 
-/* Variables (Light Blue) */
-.highlight .nd {
-  color: #dcdcaa !important;
-}
+/* Variables */
+
 
 /* Decorators */
 .highlight .gh {

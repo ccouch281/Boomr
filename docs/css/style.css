@@ -50,6 +50,7 @@ header {
   text-decoration: none;
   background: linear-gradient(90deg, #58a6ff, #a371f7);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -213,10 +214,146 @@ footer {
   border: 1px solid var(--border-color);
 }
 
+.article-content img {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 4px;
+}
+
 .article-content code {
   font-family: 'Fira Code', monospace;
   font-size: 0.9em;
+  color: #a371f7;
+  background: rgba(163, 113, 247, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
 }
+
+/* Visual Studio 2026 Dark Syntax Highlighting (Comprehensive) */
+.highlight,
+pre.highlight,
+.highlight pre,
+.article-content pre {
+  background: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  padding: 1.5rem !important;
+  border-radius: 8px !important;
+  overflow-x: auto !important;
+  border: 1px solid #3e3e42 !important;
+  font-family: 'Fira Code', 'Consolas', 'Courier New', monospace !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Individual Token Overrides */
+.highlight .c,
+.highlight .c1,
+.highlight .cm {
+  color: #6a9955 !important;
+  font-style: italic !important;
+}
+
+/* Comments */
+.highlight .cp,
+.highlight .cpf {
+  color: #9b9b9b !important;
+}
+
+/* Preprocessor */
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .ow {
+  color: #569cd6 !important;
+}
+
+/* Keywords (Blue) */
+.highlight .kt,
+.highlight .nc,
+.highlight .no {
+  color: #4ec9b0 !important;
+}
+
+/* Types / Classes (Teal) */
+.highlight .nf,
+.highlight .fm {
+  color: #dcdcaa !important;
+}
+
+/* Functions (Yellow) */
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .ss {
+  color: #ce9178 !important;
+}
+
+/* Strings (Orange) */
+.highlight .m,
+.highlight .mi,
+.highlight .mf,
+.highlight .mh,
+.highlight .mo,
+.highlight .il {
+  color: #b5cea8 !important;
+}
+
+/* Numbers (Light Green) */
+.highlight .o,
+.highlight .p {
+  color: #d4d4d4 !important;
+}
+
+/* Operators / Punctuation */
+.highlight .nb,
+.highlight .bp {
+  color: #569cd6 !important;
+}
+
+/* Built-ins */
+.highlight .nl {
+  color: #c8c8c8 !important;
+}
+
+/* Labels */
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi {
+  color: #9cdcfe !important;
+}
+
+/* Variables (Light Blue) */
+.highlight .nd {
+  color: #dcdcaa !important;
+}
+
+/* Decorators */
+.highlight .gh {
+  color: #569cd6 !important;
+  font-weight: bold !important;
+}
+
+/* Generic Heading */
+.highlight .gu {
+  color: #569cd6 !important;
+  font-weight: bold !important;
+}
+
+/* Generic Subheading */
+
 
 .back-link {
   display: inline-flex;
@@ -232,7 +369,15 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2.5rem; }
-  .article-header h1 { font-size: 2rem; }
-  .nav-container { padding: 0 1rem; }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .article-header h1 {
+    font-size: 2rem;
+  }
+
+  .nav-container {
+    padding: 0 1rem;
+  }
 }

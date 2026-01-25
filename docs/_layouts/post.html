@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<a href="{{ " /" | relative_url }}" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+        style="margin-right: 8px; transform: rotate(180deg);">
+        <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+    </svg>
+    Back to Home
+</a>
+
+<article>
+    <div class="article-header">
+        <h1>{{ page.title }}</h1>
+        <div class="article-meta">
+            <span>{{ page.date | date: "%B %d, %Y" }}</span>
+            <span>&bull;</span>
+            <span>{{ page.category | default: "Post" }}</span>
+        </div>
+    </div>
+
+    <div class="article-content">
+        {{ content }}
+    </div>
+</article>

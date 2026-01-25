@@ -1,71 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+---
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boomr Dev Blog</title>
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="Development updates and insights for the Boomr project.">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<section class="hero">
+    <h1>Development Log</h1>
+    <p>Tracking the progress, challenges, and victories of building Boomr.</p>
+</section>
 
-<body>
-
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo">Boomr.</a>
-            <nav>
-                <a href="https://github.com/ccouch281/Boomr" target="_blank">GitHub</a>
-                <a href="#">About</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="hero">
-            <h1>Development Log</h1>
-            <p>Tracking the progress, challenges, and victories of building Boomr.</p>
-        </section>
-
-        <div class="posts-grid">
-
-            <!-- Blog Post 1 -->
-            <article class="post-card">
-                <div class="post-date">January 21, 2026</div>
-                <a href="posts/welcome.html" class="post-title">Welcome to the Boomr Dev Blog</a>
-                <p class="post-excerpt">Setting up the foundation for the project and establishing my development
-                    workflow with Unreal Engine 4.</p>
-                <a href="posts/welcome.html" class="read-more">
-                    Read Article
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-            </article>
-
-            <!-- Placeholder for more posts -->
-            <article class="post-card">
-                <div class="post-date">Coming Soon</div>
-                <a href="#" class="post-title">Weapon Systems Architecture</a>
-                <p class="post-excerpt">A deep dive into how I am structuring the weapon inheritance hierarchy in C++.
-                </p>
-                <span class="read-more" style="opacity: 0.5; cursor: default;">Coming Soon</span>
-            </article>
-
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Boomr Project. Built with &hearts; using GitHub Pages.</p>
-    </footer>
-
-</body>
-
-</html>
+<div class="posts-grid">
+    {% for post in site.posts %}
+    <article class="post-card">
+        <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+        <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+        <p class="post-excerpt">{{ post.description | default: post.excerpt }}</p>
+        <a href="{{ post.url | relative_url }}" class="read-more">
+            Read Article
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </a>
+    </article>
+    {% endfor %}
+</div>

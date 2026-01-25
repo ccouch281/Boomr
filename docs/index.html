@@ -11,9 +11,9 @@ layout: default
     {% for post in site.posts %}
     <article class="post-card">
         <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
-        <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+        <a href="/Boomr{{ post.url }}" class="post-title">{{ post.title }}</a>
         <p class="post-excerpt">{{ post.description | default: post.excerpt }}</p>
-        <a href="{{ post.url | relative_url }}" class="read-more">
+        <a href="/Boomr{{ post.url }}" class="read-more">
             Read Article
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"

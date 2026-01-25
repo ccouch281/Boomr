@@ -3,11 +3,12 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
+#include "BooPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
 #include "Components/CapsuleComponent.h"
-#include "Grenade.h"
-#include "WeaponStatic.h"
+#include "Weapons/BooWeapon.h"
+#include "Weapons/BooWeaponData.h"
 
 
 ABooPawn::ABooPawn()
@@ -24,13 +25,37 @@ ABooPawn::ABooPawn()
     Camera->FieldOfView = 110.f;
     Camera->bConstrainAspectRatio = true;
     Camera->AspectRatio = 1.7777778f;
-	Camera->bUsePawnControlRotation = true;
+    
+    // We disable these to prevent the low-precision float-Euler ControllerRotation from fighting our 64-bit pipeline
+    Camera->bUsePawnControlRotation = false;
+    bUseControllerRotationYaw = false;
+    bUseControllerRotationPitch = false;
+    bUseControllerRotationRoll = false;
 
     bJumpButtonIsHeld = false;
     bCrouchButtonIsHeld = false;
     CharacterMovementProps = FCharacterMovementProperties();
     ApplyCharacterMovementProperties(CharacterMovementProps);
+}
 
+void ABooPawn::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// Spawn default weapon
+	if (DefaultWeaponData)
+	{
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.Owner = this;
+		SpawnParams.Instigator = this;
+		
+		CurrentWeapon = GetWorld()->SpawnActor<ABooWeapon>(ABooWeapon::StaticClass(), GetActorLocation(), GetActorRotation(), SpawnParams);
+		if (CurrentWeapon)
+		{
+			CurrentWeapon->InitializeWeapon(DefaultWeaponData);
+			CurrentWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("GripPoint"));
+		}
+	}
 }
 
 void ABooPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -47,13 +72,16 @@ void ABooPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ABooPawn::MyStopJumping);
 	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this, &ABooPawn::MyStartCrouching);
 	PlayerInputComponent->BindAction("Crouch", IE_Released, this, &ABooPawn::MyStopCrouching);
-	PlayerInputComponent->BindAction("Shoot", IE_Pressed, this, &ABooPawn::Shoot);
-	//throw grenade
-        PlayerInputComponent->BindAction("ThrowGrenade", IE_Pressed, this, &ABooPawn::ThrowGrenade);
+	
+	// Unified firing input
+	PlayerInputComponent->BindAction("Shoot", IE_Pressed, this, &ABooPawn::StartFire);
+	PlayerInputComponent->BindAction("Shoot", IE_Released, this, &ABooPawn::StopFire);
+
+	// Grenades are now just another weapon/item type you can switch to
 
 	// turn and look
-	PlayerInputComponent->BindAxis("Turn", this, &ABooPawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("LookUp", this, &ABooPawn::AddControllerPitchInput);
+	//PlayerInputComponent->BindAxis("Turn", this, &ABooPawn::AddControllerYawInput);
+	//PlayerInputComponent->BindAxis("LookUp", this, &ABooPawn::AddControllerPitchInput);
 
 }
 
@@ -139,28 +167,18 @@ void ABooPawn::MyStopCrouching()
 	bCrouchButtonIsHeld = false;
 }
 
-void ABooPawn::Shoot()
+void ABooPawn::StartFire()
 {
-	UWeaponStatic::FireHitscan(
-		GetWorld(),
-		this,
-		GetController(),	
-		Camera->GetComponentLocation(),
-		Camera->GetForwardVector()
-	);
-}
-void ABooPawn::ThrowGrenade()
-{
-	if (GrenadeClass)
+	if (CurrentWeapon)
 	{
-		FVector SpawnLocation = Camera->GetComponentLocation();
-		FRotator SpawnRotation = Camera->GetComponentRotation();
+		CurrentWeapon->StartPrimaryFire();
+	}
+}
 
-		AGrenade* Grenade = GetWorld()->SpawnActor<AGrenade>(GrenadeClass, SpawnLocation, SpawnRotation);
-		if (Grenade)
-		{
-			Grenade->SetOwner(this);
-
-		}
+void ABooPawn::StopFire()
+{
+	if (CurrentWeapon)
+	{
+		CurrentWeapon->StopPrimaryFire();
 	}
 }

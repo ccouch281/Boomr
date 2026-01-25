@@ -24,11 +24,14 @@ public class Boomr : ModuleRules
 			"Engine", 
 			"InputCore",
 		});
+
+
 		PrivateDependencyModuleNames.AddRange(new string[] 
 		{ 
 			"Slate", 
 			"SlateCore",
 			"BooShaders",
+			"BoomrRawInput",
 		});
 	}
 }

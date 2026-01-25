@@ -8,11 +8,11 @@
 
 class USkeletalMeshComponent;
 class UCameraComponent;
-class UInputManager;
+class ABooWeapon;
+class UBooWeaponData;
 
 class UMaterialInterface;
 class USoundBase;
-class AGrenade;
 
 USTRUCT(BlueprintType)
 struct FCharacterMovementProperties
@@ -103,11 +103,16 @@ public:
 	void MyStopCrouching();
 	bool bCrouchButtonIsHeld;
 
-	void Shoot();
+	void StartFire();
+	void StopFire();
 
-    void ThrowGrenade();
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
+	ABooWeapon* CurrentWeapon;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grenade")
-    TSubclassOf<AGrenade> GrenadeClass;
+	/** Default weapon data to spawn on start */
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	UBooWeaponData* DefaultWeaponData;
 
+protected:
+	virtual void BeginPlay() override;
 };

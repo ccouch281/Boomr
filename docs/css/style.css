@@ -256,6 +256,8 @@ pre.highlight,
 }
 
 /* Individual Token Overrides - Visual Studio 2026 Dark */
+
+/* 1. Comments (Green) */
 .highlight .c,
 .highlight .c1,
 .highlight .cm,
@@ -264,39 +266,35 @@ pre.highlight,
   font-style: italic !important;
 }
 
-/* Comments */
-.highlight .cp {
-  color: #9b9b9b !important;
-}
-
-/* Preprocessor */
-
-/* Keywords (Blue) - const, return, if, else, etc. */
+/* 2. Keywords (Blue) - const, return, if, class, void */
 .highlight .k,
 .highlight .kd,
 .highlight .kn,
 .highlight .kp,
 .highlight .kr,
-.highlight .kw {
+.highlight .kw,
+.highlight .kc {
   color: #569cd6 !important;
 }
 
-/* Types (Teal) - float, bool, int, void, class names */
+/* 3. Types (Teal) - float, bool, UserTypes, Built-ins */
 .highlight .kt,
 .highlight .nc,
 .highlight .no,
-.highlight .nt {
+.highlight .nt,
+.highlight .nb {
   color: #4ec9b0 !important;
 }
 
-/* Functions (Yellow) */
+/* 4. Functions (Yellow) */
 .highlight .nf,
 .highlight .fm,
-.highlight .na {
+.highlight .na,
+.highlight .nl {
   color: #dcdcaa !important;
 }
 
-/* Strings (Orange) */
+/* 5. Strings (Orange) */
 .highlight .s,
 .highlight .s1,
 .highlight .s2,
@@ -312,7 +310,7 @@ pre.highlight,
   color: #ce9178 !important;
 }
 
-/* Numbers (Light Green) */
+/* 6. Numbers (Light Green) */
 .highlight .m,
 .highlight .mi,
 .highlight .mf,
@@ -322,23 +320,23 @@ pre.highlight,
   color: #b5cea8 !important;
 }
 
-/* Operators & Punctuation (White/Grey) */
+/* 7. Operators & Punctuation (Grey/White) */
 .highlight .o,
-.highlight .p {
+.highlight .p,
+.highlight .ow {
   color: #d4d4d4 !important;
 }
 
-/* Macros / Defined Constants (Purple/Pink in VS, sometimes Blue) - Let's use light purple */
-.highlight .m {
-  color: #b5cea8 !important;
+/* 8. Preprocessor (Grey) */
+.highlight .cp {
+  color: #9b9b9b !important;
 }
 
-/* Built-ins / Variables */
-.highlight .nb {
-  color: #4ec9b0 !important;
-}
-
-/* Built-in types often look like types */
+/* 9. Variables & Generic Identifiers (Light Blue) 
+   Crucial: Rouge often leaves variables and non-standard types as generic 'n' or 'nx'. 
+   In VS, these are usually Light Blue variables. Setting this prevents 'all white' text. */
+.highlight .n,
+.highlight .nx,
 .highlight .nv,
 .highlight .vc,
 .highlight .vg,
@@ -346,8 +344,17 @@ pre.highlight,
   color: #9cdcfe !important;
 }
 
-/* Variables */
+/* 10. Fixes */
+.highlight .gd {
+  color: #f44336 !important;
+}
 
+/* Diff Delete */
+.highlight .gi {
+  color: #4caf50 !important;
+}
+
+/* Diff Insert */
 
 /* Decorators */
 .highlight .gh {

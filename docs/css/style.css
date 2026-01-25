@@ -239,34 +239,40 @@ footer {
   border-radius: 0;
 }
 
-/* Visual Studio 2026 Dark Syntax Highlighting (Comprehensive) */
-.highlight,
+/* Minimal Mistakes 'Material' Syntax Highlighting (Base16) */
+/* Source: https://github.com/mmistakes/minimal-mistakes/blob/master/_sass/minimal-mistakes/_syntax.scss */
+
+div.highlighter-rouge,
+figure.highlight,
 pre.highlight,
-.highlight pre,
 .article-content pre {
-  background: #1e1e1e !important;
-  color: #d4d4d4 !important;
-  padding: 1.5rem !important;
-  border-radius: 8px !important;
-  overflow-x: auto !important;
-  border: 1px solid #3e3e42 !important;
-  font-family: 'Fira Code', 'Consolas', 'Courier New', monospace !important;
-  font-size: 0.95rem !important;
+  background: #263238 !important;
+  color: #eeffff !important;
+  font-family: 'Fira Code', 'Consolas', monospace !important;
+  font-size: 0.9em !important;
   line-height: 1.5 !important;
+  border-radius: 4px !important;
+  padding: 1em !important;
+  overflow-x: auto !important;
+  border: 1px solid #37474f !important;
 }
 
-/* Individual Token Overrides - Visual Studio 2026 Dark */
+/* Base Text */
+.highlight {
+  color: #eeffff !important;
+}
 
-/* 1. Comments (Green) */
+/* Comments (Grey-Blue) */
 .highlight .c,
 .highlight .c1,
 .highlight .cm,
-.highlight .cs {
-  color: #6a9955 !important;
+.highlight .cs,
+.highlight .cp {
+  color: #546e7a !important;
   font-style: italic !important;
 }
 
-/* 2. Keywords (Blue) - const, return, if, class, void */
+/* Keywords (Purple) */
 .highlight .k,
 .highlight .kd,
 .highlight .kn,
@@ -274,27 +280,28 @@ pre.highlight,
 .highlight .kr,
 .highlight .kw,
 .highlight .kc {
-  color: #569cd6 !important;
+  color: #c792ea !important;
 }
 
-/* 3. Types (Teal) - float, bool, UserTypes, Built-ins */
+/* Types/Classes (Yellow) */
 .highlight .kt,
 .highlight .nc,
 .highlight .no,
 .highlight .nt,
+.highlight .nn,
 .highlight .nb {
-  color: #4ec9b0 !important;
+  color: #ffcb6b !important;
 }
 
-/* 4. Functions (Yellow) */
+/* Functions (Blue) */
 .highlight .nf,
 .highlight .fm,
 .highlight .na,
 .highlight .nl {
-  color: #dcdcaa !important;
+  color: #82aaff !important;
 }
 
-/* 5. Strings (Orange) */
+/* Strings (Green) */
 .highlight .s,
 .highlight .s1,
 .highlight .s2,
@@ -307,69 +314,57 @@ pre.highlight,
 .highlight .sx,
 .highlight .sr,
 .highlight .ss {
-  color: #ce9178 !important;
+  color: #c3e88d !important;
 }
 
-/* 6. Numbers (Light Green) */
+/* Numbers/Literals/Constants (Orange) */
 .highlight .m,
 .highlight .mi,
 .highlight .mf,
 .highlight .mh,
 .highlight .mo,
-.highlight .il {
-  color: #b5cea8 !important;
+.highlight .il,
+.highlight .l {
+  color: #f78c6c !important;
 }
 
-/* 7. Operators & Punctuation (Grey/White) */
+/* Operators/Tags (Cyan) */
 .highlight .o,
-.highlight .p,
-.highlight .ow {
-  color: #d4d4d4 !important;
+.highlight .ow,
+.highlight .nd {
+  color: #89ddff !important;
 }
 
-/* 8. Preprocessor (Grey) */
-.highlight .cp {
-  color: #9b9b9b !important;
-}
-
-/* 9. Variables & Generic Identifiers (Light Blue) 
-   Crucial: Rouge often leaves variables and non-standard types as generic 'n' or 'nx'. 
-   In VS, these are usually Light Blue variables. Setting this prevents 'all white' text. */
-.highlight .n,
-.highlight .nx,
+/* Variable Handling: Minimal Mistakes uses Red for vars, but lets ensure we catch them */
 .highlight .nv,
 .highlight .vc,
 .highlight .vg,
 .highlight .vi {
-  color: #9cdcfe !important;
+  color: #f07178 !important;
 }
 
-/* 10. Fixes */
+/* Catch-all for generic names to prevent white text - Light Blue */
+.highlight .n,
+.highlight .nx {
+  color: #eeffff !important;
+}
+
+/* Generic and Diff */
 .highlight .gd {
-  color: #f44336 !important;
+  color: #f07178 !important;
 }
 
-/* Diff Delete */
+/* Deleted */
 .highlight .gi {
-  color: #4caf50 !important;
+  color: #c3e88d !important;
 }
 
-/* Diff Insert */
-
-/* Decorators */
-.highlight .gh {
-  color: #569cd6 !important;
-  font-weight: bold !important;
+/* Inserted */
+.highlight .err {
+  color: #f07178 !important;
 }
 
-/* Generic Heading */
-.highlight .gu {
-  color: #569cd6 !important;
-  font-weight: bold !important;
-}
-
-/* Generic Subheading */
-
+/* Error */
 
 .back-link {
   display: inline-flex;

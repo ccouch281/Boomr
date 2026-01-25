@@ -231,6 +231,14 @@ footer {
   border-radius: 4px;
 }
 
+/* Reset for code blocks so they don't look like inline code */
+.article-content pre code {
+  color: inherit;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
 /* Visual Studio 2026 Dark Syntax Highlighting (Comprehensive) */
 .highlight,
 pre.highlight,

@@ -1,9 +1,7 @@
 title: Boomr
 description: A devlog for the Boomr project.
-# theme: jekyll-theme-prime # Optional, but good to have a default or we can just use custom css. 
-# Since we have custom CSS, we might not strictly need a theme, but let's keep it minimal.
-# Actually, the user has custom CSS. Let's just set the basics.
-baseurl: "/Boomr" 
+# theme: jekyll-theme-prime
+baseurl: "/Boomr"
 url: ""
 markdown: kramdown
 highlighter: rouge
